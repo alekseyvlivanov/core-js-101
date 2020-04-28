@@ -128,14 +128,19 @@ class CSSSelector {
 
   checkStructure(value) {
     // eslint-disable-next-line max-len
-    const msgOrder = 'Selector parts should be arranged in the following order: element, id, class, attribute, pseudo-class, pseudo-element';
-    const msgUniqs = 'Element, id and pseudo-element should not occur more then one time inside the selector';
+    const msgOrder =
+      'Selector parts should be arranged in the following order: element, id, class, attribute, pseudo-class, pseudo-element';
+    const msgUniqs =
+      'Element, id and pseudo-element should not occur more then one time inside the selector';
 
     if (this.uniqs.includes(value) && this.structure.includes(value)) {
       throw new Error(msgUniqs);
     }
 
-    if (this.structure.length > 0 && this.order[value] < this.order[this.structure.slice(-1)]) {
+    if (
+      this.structure.length > 0 &&
+      this.order[value] < this.order[this.structure.slice(-1)]
+    ) {
       throw new Error(msgOrder);
     }
 
