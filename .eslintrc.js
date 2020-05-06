@@ -5,7 +5,7 @@ module.exports = {
     node: true,
     mocha: true,
   },
-  extends: ['airbnb-base', 'plugin:prettier/recommended'],
+  extends: ['airbnb-base'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',

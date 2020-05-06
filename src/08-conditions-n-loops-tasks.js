@@ -120,12 +120,16 @@ function isTriangle(a, b, c) {
  *
  */
 function doRectanglesOverlap(rect1, rect2) {
-  const { top: x1, left: y1, width: w1, height: h1 } = rect1;
-  const { top: x2, left: y2, width: w2, height: h2 } = rect2;
+  const {
+    top: x1, left: y1, width: w1, height: h1,
+  } = rect1;
+  const {
+    top: x2, left: y2, width: w2, height: h2,
+  } = rect2;
 
   return (
-    (x1 + h1 > x2 && y1 + w1 > y2 && x1 <= x2 && y1 <= y2) ||
-    (x2 + h2 > x1 && y2 + w2 > y1 && x2 <= x1 && y2 <= y1)
+    (x1 + h1 > x2 && y1 + w1 > y2 && x1 <= x2 && y1 <= y2)
+    || (x2 + h2 > x1 && y2 + w2 > y1 && x2 <= x1 && y2 <= y1)
   );
 }
 
@@ -158,7 +162,7 @@ function doRectanglesOverlap(rect1, rect2) {
 function isInsideCircle(circle, point) {
   return (
     Math.sqrt(
-      (circle.center.x - point.x) ** 2 + (circle.center.y - point.y) ** 2
+      (circle.center.x - point.x) ** 2 + (circle.center.y - point.y) ** 2,
     ) < circle.radius
   );
 }
@@ -446,10 +450,8 @@ function getCommonDirectoryPath(pathes) {
 function getMatrixProduct(m1, m2) {
   // https://gist.github.com/jremmen/9454479
   const transpose = (a) => a[0].map((x, i) => a.map((y) => y[i]));
-  const dotproduct = (a, b) =>
-    a.map((x, i) => a[i] * b[i]).reduce((m, n) => m + n);
-  const mmultiply = (a, b) =>
-    a.map((x) => transpose(b).map((y) => dotproduct(x, y)));
+  const dotproduct = (a, b) => a.map((x, i) => a[i] * b[i]).reduce((m, n) => m + n);
+  const mmultiply = (a, b) => a.map((x) => transpose(b).map((y) => dotproduct(x, y)));
   return mmultiply(m1, m2);
 }
 
