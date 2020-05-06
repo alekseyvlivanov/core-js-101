@@ -186,9 +186,9 @@ function findFirstSingleChar(str) {
     }
   });
 
-  // eslint-disable-next-line array-callback-return
   Object.entries(chars).map(([key, value]) => {
     if (value === 1 && !result) result = key;
+    return {};
   });
   return result;
 }
@@ -363,11 +363,14 @@ function isBracketsBalanced(str) {
   let aString = str;
   let aLength;
 
+  const aStringReplace = (e) => {
+    aString = aString.replace(e, '');
+  };
+
   do {
     aLength = aString.length;
-    // eslint-disable-next-line no-loop-func
     bracketsPairs.forEach((e) => {
-      aString = aString.replace(e, '');
+      aStringReplace(e);
     });
   } while (aLength !== aString.length);
 
@@ -415,8 +418,8 @@ function getCommonDirectoryPath(pathes) {
   const len = Math.min(...splitPathes.map((e) => e.length));
   let idx = 0;
   while (idx < len) {
-    // eslint-disable-next-line no-loop-func
-    if (!splitPathes.every((e) => e[idx] === splitPathes[0][idx])) break;
+    const i = idx;
+    if (!splitPathes.every((e) => e[i] === splitPathes[0][i])) break;
     idx += 1;
   }
   return `${splitPathes[0].slice(0, idx).join('/')}${idx !== 0 ? '/' : ''}`;

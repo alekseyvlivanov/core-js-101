@@ -127,7 +127,6 @@ class CSSSelector {
   }
 
   checkStructure(value) {
-    // eslint-disable-next-line max-len
     const msgOrder =
       'Selector parts should be arranged in the following order: element, id, class, attribute, pseudo-class, pseudo-element';
     const msgUniqs =
